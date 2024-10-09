@@ -22,4 +22,6 @@ RUN git config --global user.email "chani@test.com" \
 
 # RUN docker-php-ext-install mysqli pdo pdo_mysql zip unzip && docker-php-ext-enable mysqli pdo_mysql zip unzip
 RUN a2ensite docker.local
+#active la reecriture d'url sans index.php
+RUN a2enmod rewrite
 
