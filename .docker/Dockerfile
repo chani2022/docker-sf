@@ -3,6 +3,7 @@ FROM php:8.2-apache
 WORKDIR /app
 
 COPY ./apache/docker.local.conf /etc/apache2/sites-available/docker.local.conf
+COPY ./apache/ssl/docker.local-ssl.conf /etc/apache2/sites-available/docker.local-ssl.conf
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN apt update \
@@ -21,7 +22,12 @@ RUN git config --global user.email "chani@test.com" \
     && git config --global user.name "chani"
 
 # RUN docker-php-ext-install mysqli pdo pdo_mysql zip unzip && docker-php-ext-enable mysqli pdo_mysql zip unzip
-RUN a2ensite docker.local
-#active la reecriture d'url sans index.php
-RUN a2enmod rewrite
+RUN a2ensite docker.local \
+    #active la reecriture d'url sans index.php
+    && a2enmod rewrite \
+    && a2enmod ssl\
+    && a2ensite docker.local-ssl
+
+
+
 
