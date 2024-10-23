@@ -1,20 +1,20 @@
 version: '3.8'
+
 services:
   mysql:
-      container_name: mysql8
-      image: bitnami/mysql:8.0
-      # command: --default-authentication-plugin=mysql_native_password
-      restart: always
-      environment:
-        ALLOW_EMPTY_PASSWORD: no
-        MYSQL_ROOT_PASSWORD: secret
-        MYSQL_DATABASE: symfony_docker
-        MYSQL_USER: symfony
-        MYSQL_PASSWORD: symfony
-      ports:
-        - '3306:3306'
-      volumes:
-        - ./.docker/mysql:/bitnami/mysql/data
+    container_name: mysql8
+    image: bitnami/mysql:8.0
+    restart: always
+    environment:
+      ALLOW_EMPTY_PASSWORD: no
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: symfony_docker
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./.docker/mysql:/bitnami/mysql/data
 
   phpadmin:
     container_name: php_admin5
@@ -26,9 +26,9 @@ services:
       DATABASE_PASSWORD: secret
     ports:
       - '8080:8080'
+      - '8443:8443'
     depends_on:
       - mysql
-
   php:
     container_name: php8-apache
     build:
@@ -37,7 +37,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./:/app
+      - ./:/var/www/docker.local
     depends_on:
       - mysql
       - phpadmin
