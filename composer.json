@@ -55,11 +55,18 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "CI": {
+            "test": "php bin/phpunit",
+            "stan": "php vendor/bin/phpstan",
+            "cache:warmup": "php bin/console c:w"
+        },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "@CI"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "@CI"
         ]
     },
     "conflict": {
@@ -72,6 +79,7 @@
         }
     },
     "require-dev": {
+        "phpstan/phpstan-symfony": "^1.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.2.*",
         "symfony/css-selector": "6.2.*",
