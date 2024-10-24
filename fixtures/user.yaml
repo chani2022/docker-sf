@@ -1,0 +1,15 @@
+App\Entity\User:
+    user_admin:
+        email: admin@test.mg
+        roles: ["ROLE_ADMIN"]
+        password: \$2y\$13\$lSjnNI7fn.ZXFSMT32BpCe7XwQHTM1b3RY0g9DNCWbofcXmlJheJ6 #admin
+    
+    user_redac:
+        email: redac@test.mg
+        roles: ["ROLE_REDAC"]
+        password: \$2y\$13\$wyHrCypJSpQON9aWTvtcx.xZSJWnZ/kYqs9RII1jC.PSs.1.w5/wC #redac
+
+    user_visiteur:
+        email: visiteur@test.mg
+        roles: ["ROLE_VISITEUR"]
+        password: \$2y\$13\$jzMhAZy5Dx6MZf2PXV44iuiRrAx20jlFAv0N9geFR51yzmH5nr7mi #user
