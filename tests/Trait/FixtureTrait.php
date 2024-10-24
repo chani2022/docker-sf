@@ -13,7 +13,6 @@ trait FixtureTrait
 
     public function initFixtures(): void
     {
-        dd("makato");
         $container = static::getContainer();
         $path_fixture = $container->getParameter("root_path_fixtures");
 
@@ -21,11 +20,5 @@ trait FixtureTrait
         $this->fixtures = $this->databaseTool->loadAliceFixture([
             $path_fixture . '/user.yaml'
         ]);
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        unset($this->databaseTool);
     }
 }
