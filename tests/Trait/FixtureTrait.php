@@ -4,11 +4,12 @@ namespace App\Tests\Trait;
 
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
+use App\Entity\User;
 
 trait FixtureTrait
 {
-
     protected AbstractDatabaseTool $databaseTool;
+    /** @var array<string, User> $fixtures */
     protected array $fixtures;
 
     public function initFixtures(): void
