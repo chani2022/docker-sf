@@ -30,7 +30,7 @@ services:
     depends_on:
       - mysql
   php:
-    container_name: php8-apache
+    container_name: app
     build:
       context: ./.docker
     ports:

@@ -19,6 +19,6 @@ you can access of the page web to http://docker.local a certificat ssl is enable
 
 important:
     install a dependance of symfony:
-      - docker exec -ti php8-apache bash
+      - docker exec -ti app bash
       - install dependance which you need
   
